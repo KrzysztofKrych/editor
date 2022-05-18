@@ -1,7 +1,9 @@
 import { Select } from 'antd'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useAppDispatch } from '../../store'
 import { addDraggableIconThunkAction, addDraggableTextThunkAction } from '../../store/editor/editor.thunk'
+import { iconsSelector } from '../../store/icons/icons.reducer'
 import { StyledFlex } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { Button } from '../ui/Button'
@@ -14,6 +16,7 @@ export const EditorMenu = () => {
   const defaultSelectedDraggableType = DraggableType.ICON
   const [selectedDraggableType, setSelectedDraggableType] = useState<DraggableType>(defaultSelectedDraggableType)
   const dispatch = useAppDispatch()
+  const { icons } = useSelector(iconsSelector)
   const handleAddDraggable = () => {
     switch (selectedDraggableType) {
       case DraggableType.TEXT: {
@@ -52,8 +55,11 @@ export const EditorMenu = () => {
           text='Add'
         />
       </StyledFlex>
-      <span className='material-icons'>face</span>
-      <span className='material-icons'>expand_less</span>
+      {icons.map((icon) => (
+        <span key={icon} className='material-icons'>
+          {icon}
+        </span>
+      ))}
     </div>
   )
 }
