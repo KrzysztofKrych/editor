@@ -1,5 +1,6 @@
 import './App.css'
-import { MainLayout } from './components/MainLayout'
+import 'antd/dist/antd.min.css'
+import { MainLayout } from './components/ui/MainLayout'
 
 function App() {
   return (
