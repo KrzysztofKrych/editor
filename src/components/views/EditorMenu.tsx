@@ -11,7 +11,8 @@ const defaultText = { value: `test${Date.now()}`, id: `${Date.now()}`, position:
 const defaultIcon = { value: `someicon`, id: `${Date.now()}`, position: { x: 0, y: 0 } }
 
 export const EditorMenu = () => {
-  const [selectedDraggableType, setSelectedDraggableType] = useState<DraggableType>()
+  const defaultSelectedDraggableType = DraggableType.ICON
+  const [selectedDraggableType, setSelectedDraggableType] = useState<DraggableType>(defaultSelectedDraggableType)
   const dispatch = useAppDispatch()
   const handleAddDraggable = () => {
     switch (selectedDraggableType) {
@@ -37,7 +38,7 @@ export const EditorMenu = () => {
           }}
           title='Choose new component'
           titlePadding='1rem 0'
-          defaultValue={DraggableType.ICON}
+          defaultValue={defaultSelectedDraggableType}
           options={Object.values(DraggableType).map((type) => (
             <Select.Option key={type} value={type}>
               {type}
