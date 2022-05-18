@@ -7,13 +7,16 @@ interface Props {
   options: ReactElement[]
   title: string
   titlePadding?: string
+  showArrow?: boolean
 }
 
-export const SelectLabel = ({ defaultValue, options, title, titlePadding }: Props) => (
+export const SelectLabel = ({ defaultValue, options, title, titlePadding, showArrow = false }: Props) => (
   <>
     <StyledText padding={titlePadding} size='14' color={COLORS.PRIMARY}>
       {title}
     </StyledText>
-    <StyledSelect defaultValue={defaultValue}>{options}</StyledSelect>
+    <StyledSelect showArrow={showArrow} defaultValue={defaultValue}>
+      {options}
+    </StyledSelect>
   </>
 )

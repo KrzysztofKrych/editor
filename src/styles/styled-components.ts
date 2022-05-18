@@ -17,6 +17,22 @@ export const StyledGrid = styled.div<{ columns: string; rows?: string; height?: 
   grid-template-rows: ${(props) => (props.rows ? props.rows : 'inherit')};
   height: ${(props) => (props.height ? props.height : '100%')};
 `
+
+export const StyledFlex = styled.div<{
+  direction?: string
+  justifycontent?: string
+  aligncontent?: string
+  alignitems?: string
+  padding?: string
+}>`
+  display: flex;
+  justify-content: ${(props) => (props.justifycontent ? props.justifycontent : 'center')};
+  align-items: ${(props) => (props.alignitems ? props.alignitems : 'center')};
+  align-content: ${(props) => (props.aligncontent ? props.aligncontent : 'center')};
+  flex-direction: ${(props) => (props.direction ? props.direction : 'row')};
+  padding: ${(props) => props.padding};
+`
+
 export const StyledText = styled(Typography.Text)<{
   size: string
   padding?: string
