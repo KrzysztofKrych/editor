@@ -28,6 +28,9 @@
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "no-param-reassign": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "no-shadow": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off"
   }
 }
