@@ -17,12 +17,20 @@ export const editorSlice = createSlice({
   initialState,
   reducers: {
     addDraggableText: (state, { payload }: PayloadAction<DraggableText>) => {
-      state.draggableTexts = [...state.draggableTexts, payload]
+      state.draggableTexts = [payload, ...state.draggableTexts]
+    },
+    updateDraggableText: (state, { payload }: PayloadAction<DraggableText>) => {
+      state.draggableTexts = state.draggableTexts.map((text) => {
+        if (text.id === payload.id) {
+          return payload
+        }
+        return text
+      })
     },
   },
 })
 
-export const { addDraggableText } = editorSlice.actions
+export const { addDraggableText, updateDraggableText } = editorSlice.actions
 
 export const editorSelector = (state: RootState) => state.editorReducer
 
