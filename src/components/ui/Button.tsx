@@ -6,13 +6,14 @@ import { getButtonProps } from '../../utils/helpers'
 interface Props {
   text: string
   type: ButtonType
+  onClick: () => void
   style?: CSSProperties
 }
 
-export const Button = ({ text, type, style }: Props) => {
+export const Button = ({ text, type, style, onClick }: Props) => {
   const buttonProps = getButtonProps(type)
   return (
-    <StyledButton style={style} {...buttonProps}>
+    <StyledButton onClick={onClick} style={style} {...buttonProps}>
       {text}
     </StyledButton>
   )
