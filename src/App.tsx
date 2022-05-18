@@ -2,29 +2,21 @@ import './App.css'
 import Draggable from 'react-draggable'
 import React from 'react'
 import { TestStyledDiv } from './styles/styled-components'
-import { useAppDispatch, useAppSelector } from './store'
-import { addDraggableText, editorSelector } from './store/editor/editor.reducer'
+import { useAppDispatch } from './store'
+import { addDraggableTextThunkAction } from './store/editor/editor.thunk'
+
+const defaultText = { value: `test${Date.now()}`, id: `${Date.now()}`, position: { x: 0, y: 0 } }
 
 function App() {
   const nodeRef = React.useRef(null)
-  const { draggableTexts } = useAppSelector(editorSelector)
   const dispatch = useAppDispatch()
   return (
     <div className='App'>
-      <Draggable
-        axis='x'
-        // onStop={(e, d) => {
-        //   console.log(d)
-        // }}
-        nodeRef={nodeRef}
-      >
-        <TestStyledDiv onClick={() => dispatch(addDraggableText({ value: `test${Date.now()}` }))} ref={nodeRef}>
+      <Draggable nodeRef={nodeRef}>
+        <TestStyledDiv onClick={() => dispatch(addDraggableTextThunkAction(defaultText))} ref={nodeRef}>
           12
         </TestStyledDiv>
       </Draggable>
-      {draggableTexts.map((text) => (
-        <div key={`${Date.now()}_${Math.random() * 10}`}>{text.value}</div>
-      ))}
     </div>
   )
 }
