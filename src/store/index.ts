@@ -2,9 +2,11 @@ import { combineReducers, configureStore, Action } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { ThunkAction } from 'redux-thunk'
 import { editorReducer } from './editor/editor.reducer'
+import { iconsReducer } from './icons/icons.reducer'
 
 const rootReducer = combineReducers({
   editorReducer,
+  iconsReducer,
 })
 
 export const store = configureStore({

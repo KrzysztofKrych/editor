@@ -52,6 +52,8 @@ export const EditorMenu = () => {
           text='Add'
         />
       </StyledFlex>
+      <span className='material-icons'>face</span>
+      <span className='material-icons'>expand_less</span>
     </div>
   )
 }
