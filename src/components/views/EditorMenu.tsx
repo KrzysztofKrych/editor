@@ -1,13 +1,14 @@
 import { Select } from 'antd'
 import { useState } from 'react'
 import { useAppDispatch } from '../../store'
-import { addDraggableTextThunkAction } from '../../store/editor/editor.thunk'
+import { addDraggableIconThunkAction, addDraggableTextThunkAction } from '../../store/editor/editor.thunk'
 import { StyledFlex } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { Button } from '../ui/Button'
 import { SelectLabel } from '../ui/SelectLabel'
 
 const defaultText = { value: `test${Date.now()}`, id: `${Date.now()}`, position: { x: 0, y: 0 } }
+const defaultIcon = { value: `someicon`, id: `${Date.now()}`, position: { x: 0, y: 0 } }
 
 export const EditorMenu = () => {
   const [selectedDraggableType, setSelectedDraggableType] = useState<DraggableType>()
@@ -19,6 +20,7 @@ export const EditorMenu = () => {
         break
       }
       case DraggableType.ICON: {
+        dispatch(addDraggableIconThunkAction({ ...defaultIcon }))
         break
       }
       default:
