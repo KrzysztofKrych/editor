@@ -1,25 +1,21 @@
 import { useRef } from 'react'
 import Draggable from 'react-draggable'
-import { useAppDispatch } from '../../store'
-import { addDraggableTextThunkAction } from '../../store/editor/editor.thunk'
+import { useSelector } from 'react-redux'
+import { editorSelector } from '../../store/editor/editor.reducer'
 import { StyledDiv } from '../../styles/styled-components'
-
-const defaultText = { value: `test${Date.now()}`, id: `${Date.now()}`, position: { x: 0, y: 0 } }
 
 export const Editor = () => {
   const nodeRef = useRef(null)
-  const dispatch = useAppDispatch()
+  const { draggableTexts } = useSelector(editorSelector)
   return (
     <div>
-      <Draggable bounds='parent' nodeRef={nodeRef}>
-        <StyledDiv
-          style={{ display: 'inline-block' }}
-          onClick={() => dispatch(addDraggableTextThunkAction(defaultText))}
-          ref={nodeRef}
-        >
-          12
-        </StyledDiv>
-      </Draggable>
+      {draggableTexts.map(({ id, value }) => (
+        <Draggable key={id} bounds='parent' nodeRef={nodeRef}>
+          <StyledDiv style={{ display: 'inline-block' }} ref={nodeRef}>
+            {value}
+          </StyledDiv>
+        </Draggable>
+      ))}
     </div>
   )
 }
