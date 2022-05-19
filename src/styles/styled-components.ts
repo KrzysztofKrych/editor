@@ -37,6 +37,7 @@ export const StyledFlex = styled.div<{
   alignitems?: string
   padding?: string
   width?: string
+  borderleft?: string
 }>`
   display: flex;
   justify-content: ${(props) => (props.justifycontent ? props.justifycontent : 'center')};
@@ -45,6 +46,7 @@ export const StyledFlex = styled.div<{
   flex-direction: ${(props) => (props.direction ? props.direction : 'row')};
   padding: ${(props) => props.padding};
   width: ${(props) => props.width};
+  border-left: ${(props) => props.borderleft};
 `
 
 export const StyledText = styled(Typography.Text)<{

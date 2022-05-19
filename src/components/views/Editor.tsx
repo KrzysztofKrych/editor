@@ -23,7 +23,7 @@ export const Editor = () => {
   }
 
   return (
-    <StyledDiv>
+    <StyledDiv width='100%' height='100%'>
       {draggableTexts.map((text) => (
         <Draggable
           onStop={(event, position) => {
@@ -36,7 +36,6 @@ export const Editor = () => {
             className={`.${text.id}`}
             style={{
               position: 'absolute',
-              display: 'inline-block',
               color: text.color,
               fontWeight: text.fontWeight,
               fontSize: text.fontSize,
@@ -60,7 +59,7 @@ export const Editor = () => {
           }}
         >
           <StyledDiv
-            style={{ position: 'absolute', display: 'inline-block' }}
+            style={{ position: 'absolute' }}
             onClick={() => {
               handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.ICON, id: icon.id })
             }}
@@ -84,7 +83,6 @@ export const Editor = () => {
             border={`1px solid ${COLORS.PRIMARY}`}
             style={{
               position: 'absolute',
-              display: 'inline-block',
               width: `${container.width}px`,
               height: `${container.height}px`,
             }}
