@@ -1,6 +1,7 @@
 export enum DraggableType {
   ICON = 'Icon',
   TEXT = 'Text',
+  CONTAINER = 'Container',
 }
 
 export enum ButtonType {

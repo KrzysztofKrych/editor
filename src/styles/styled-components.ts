@@ -2,9 +2,10 @@ import { Button, Input, Select, Typography } from 'antd'
 import styled from 'styled-components'
 import { COLORS } from './colors'
 
-export const StyledDiv = styled.div<{ background?: string; border?: string }>`
+export const StyledDiv = styled.div<{ background?: string; border?: string; borderleft?: string }>`
   background: ${(props) => props.background};
   border: ${(props) => props.border};
+  border-left: ${(props) => props.borderleft};
 `
 
 export const StyledSelect = styled(Select)`

@@ -14,3 +14,12 @@ export interface DraggableText extends AbstractDraggable {
 export interface DraggableIcon extends AbstractDraggable {
   value: string
 }
+
+export interface DraggableContainer extends AbstractDraggable {
+  width: number
+  height: number
+  children: {
+    icons: DraggableIcon[]
+    texts: DraggableText[]
+  }
+}

@@ -1,11 +1,14 @@
-import { DraggableIcon, DraggableText } from './interfaces'
+import { DraggableContainer, DraggableIcon, DraggableText } from './interfaces'
 import { AppThunk } from '..'
 import {
+  addDraggableContainer,
   addDraggableIcon,
   addDraggableText,
   setSelectedText,
+  updateDraggableContainer,
   updateDraggableIcon,
   updateDraggableText,
+  updateNewDraggableContainer,
 } from './editor.reducer'
 
 export const addDraggableTextThunkAction =
@@ -36,4 +39,22 @@ export const setSelectedTextThunkAction =
   (text: string): AppThunk =>
   async (dispatch) => {
     dispatch(setSelectedText(text))
+  }
+
+export const addDraggableContainerThunkAction =
+  (container: DraggableContainer): AppThunk =>
+  async (dispatch) => {
+    dispatch(addDraggableContainer(container))
+  }
+
+export const updateDraggableContainerThunkAction =
+  (container: DraggableContainer): AppThunk =>
+  async (dispatch) => {
+    dispatch(updateDraggableContainer(container))
+  }
+
+export const updateNewDraggableContainerThunkAction =
+  (container: DraggableContainer): AppThunk =>
+  async (dispatch) => {
+    dispatch(updateNewDraggableContainer(container))
   }
