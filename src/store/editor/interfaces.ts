@@ -1,4 +1,4 @@
-import { DraggableType } from '../../utils/enums'
+import { DraggableType, MenuType } from '../../utils/enums'
 
 export interface Position {
   x: number
@@ -26,4 +26,9 @@ export interface DraggableContainer extends AbstractDraggable {
     icons: DraggableIcon[]
     texts: DraggableText[]
   }
+}
+
+export interface CurrentMenu {
+  value: MenuType
+  type: DraggableType | null
 }

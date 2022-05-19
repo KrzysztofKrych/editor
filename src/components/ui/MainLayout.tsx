@@ -13,8 +13,8 @@ export const MainLayout = () => {
     <StyledGrid columns='5fr 1fr'>
       <Editor />
       <StyledDiv borderleft={`1px solid ${COLORS.PRIMARY_OPACITY}`}>
-        {currentMenu === MenuType.NEW && <EditorMenu />}
-        {currentMenu === MenuType.EDIT && <EditPanel />}
+        {currentMenu.value === MenuType.NEW && <EditorMenu />}
+        {currentMenu.value === MenuType.EDIT && <EditPanel />}
       </StyledDiv>
     </StyledGrid>
   )

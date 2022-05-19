@@ -13,7 +13,7 @@ export const EditPanel = () => {
       <StyledFlex justifycontent='space-between' width='100%'>
         <Icon
           onClick={() => {
-            dispatch(toggleCurrentMenu(MenuType.NEW))
+            dispatch(toggleCurrentMenu({ value: MenuType.NEW, type: null }))
           }}
           name='arrow_back'
           style={{ cursor: 'pointer' }}
@@ -22,6 +22,7 @@ export const EditPanel = () => {
           Edit component
         </StyledText>
       </StyledFlex>
+      {}
     </StyledFlex>
   )
 }

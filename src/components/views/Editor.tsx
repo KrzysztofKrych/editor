@@ -9,9 +9,10 @@ import {
   updateDraggableIconThunkAction,
   updateDraggableTextThunkAction,
 } from '../../store/editor/editor.thunk'
+import { CurrentMenu } from '../../store/editor/interfaces'
 import { COLORS } from '../../styles/colors'
 import { StyledDiv } from '../../styles/styled-components'
-import { MenuType } from '../../utils/enums'
+import { DraggableType, MenuType } from '../../utils/enums'
 import { Icon } from '../ui/Icon'
 
 export const Editor = () => {
@@ -20,8 +21,8 @@ export const Editor = () => {
   const { draggableTexts, draggableIcons, draggableContainers } = useSelector(editorSelector)
   const dispatch = useAppDispatch()
 
-  const handleUpdateMenuView = (type: MenuType) => {
-    dispatch(toggleMenuTypeThunkAction(type))
+  const handleUpdateMenuView = (menu: CurrentMenu) => {
+    dispatch(toggleMenuTypeThunkAction(menu))
   }
 
   return (
@@ -39,7 +40,7 @@ export const Editor = () => {
             style={{ display: 'inline-block' }}
             ref={textRef}
             onClick={() => {
-              handleUpdateMenuView(MenuType.EDIT)
+              handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.TEXT })
             }}
           >
             {text.value}
@@ -59,7 +60,7 @@ export const Editor = () => {
             style={{ display: 'inline-block' }}
             ref={iconRef}
             onClick={() => {
-              handleUpdateMenuView(MenuType.EDIT)
+              handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.ICON })
             }}
           >
             <Icon style={{ fontSize: icon.fontSize }} name={icon.value} />
@@ -77,7 +78,7 @@ export const Editor = () => {
         >
           <StyledDiv
             onClick={() => {
-              handleUpdateMenuView(MenuType.EDIT)
+              handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.CONTAINER })
             }}
             border={`1px solid ${COLORS.PRIMARY}`}
             style={{ display: 'inline-block', width: `${container.width}px`, height: `${container.height}px` }}

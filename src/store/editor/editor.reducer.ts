@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '..'
 import { MenuType } from '../../utils/enums'
 import { DEFAULT_CONTAINER } from './consts'
-import { DraggableContainer, DraggableIcon, DraggableText } from './interfaces'
+import { DraggableContainer, DraggableIcon, DraggableText, CurrentMenu } from './interfaces'
 
 export interface EditorInitialState {
   draggableTexts: DraggableText[]
@@ -10,7 +10,7 @@ export interface EditorInitialState {
   draggableContainers: DraggableContainer[]
   selectedText: string
   newContainer: DraggableContainer
-  currentMenu: MenuType
+  currentMenu: CurrentMenu
 }
 
 export const initialState: EditorInitialState = {
@@ -19,7 +19,10 @@ export const initialState: EditorInitialState = {
   draggableContainers: [],
   selectedText: '',
   newContainer: DEFAULT_CONTAINER,
-  currentMenu: MenuType.NEW,
+  currentMenu: {
+    value: MenuType.NEW,
+    type: null,
+  },
 }
 
 const reducerName = 'editor'
@@ -67,7 +70,7 @@ export const editorSlice = createSlice({
     updateNewDraggableContainer: (state, { payload }: PayloadAction<DraggableContainer>) => {
       state.newContainer = payload
     },
-    toggleCurrentMenu: (state, { payload }: PayloadAction<MenuType>) => {
+    toggleCurrentMenu: (state, { payload }: PayloadAction<CurrentMenu>) => {
       state.currentMenu = payload
     },
   },
