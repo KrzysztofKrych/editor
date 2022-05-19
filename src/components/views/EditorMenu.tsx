@@ -28,12 +28,26 @@ export const EditorMenu = () => {
   const handleAddDraggable = () => {
     switch (selectedDraggableType) {
       case DraggableType.TEXT: {
-        dispatch(addDraggableTextThunkAction({ ...DEFAULT_POSITION, value: selectedText, id: getUniqId() }))
+        dispatch(
+          addDraggableTextThunkAction({
+            ...DEFAULT_POSITION,
+            type: DraggableType.TEXT,
+            value: selectedText,
+            id: getUniqId(),
+          })
+        )
         break
       }
       // TODO CHECK IF POSSIBLE IS ADDING ICONS WITH DEFINED FONT SIZE
       case DraggableType.ICON: {
-        dispatch(addDraggableIconThunkAction({ ...DEFAULT_POSITION, ...selectedIcon, id: getUniqId() }))
+        dispatch(
+          addDraggableIconThunkAction({
+            ...DEFAULT_POSITION,
+            type: DraggableType.ICON,
+            ...selectedIcon,
+            id: getUniqId(),
+          })
+        )
         break
       }
       case DraggableType.CONTAINER: {
@@ -47,6 +61,7 @@ export const EditorMenu = () => {
             width: newContainer.width,
             height: newContainer.height,
             children: { icons: [], texts: [] },
+            type: DraggableType.CONTAINER,
           })
         )
         break

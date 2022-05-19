@@ -1,3 +1,5 @@
+import { DraggableType } from '../../utils/enums'
+
 export interface Position {
   x: number
   y: number
@@ -6,6 +8,7 @@ export interface Position {
 export interface AbstractDraggable {
   id: string
   position: Position
+  type: DraggableType
 }
 export interface DraggableText extends AbstractDraggable {
   value: string
