@@ -15,6 +15,8 @@ export interface DraggableText extends AbstractDraggable {
   fontSize: number
   color: string
   fontWeight: number
+  background: string
+  padding: string
 }
 
 export interface DraggableIcon extends AbstractDraggable {

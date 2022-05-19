@@ -13,7 +13,7 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
       title='Text:'
       inputType='text'
       inputValue={controlledTextValues.value}
-      placeholder='Type your text...'
+      placeholder='Type text...'
       onChange={(event) => {
         onChange({ ...controlledTextValues, value: event.target.value })
       }}
@@ -23,7 +23,7 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
       title='Text color:'
       inputType='text'
       inputValue={controlledTextValues.color}
-      placeholder='Choose your color'
+      placeholder='Choose color'
       onChange={(event) => {
         onChange({ ...controlledTextValues, color: event.target.value })
       }}
@@ -34,7 +34,7 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
       title='Font weight:'
       inputType='text'
       inputValue={controlledTextValues.fontWeight}
-      placeholder='Choose your font weight'
+      placeholder='Choose font weight'
       onChange={(event) => {
         onChange({ ...controlledTextValues, fontWeight: Number(event.target.value) })
       }}
@@ -42,13 +42,23 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
 
     <InputLabel
       inputWidth='200px'
-      title='Font size:'
+      title='Background:'
       onChange={(event) => {
-        onChange({ ...controlledTextValues, fontSize: Number(event.target.value) })
+        onChange({ ...controlledTextValues, background: event.target.value })
       }}
       inputType='text'
-      inputValue={controlledTextValues.fontSize}
-      placeholder='Choose your font size'
+      inputValue={controlledTextValues.background}
+      placeholder='Choose background color'
+    />
+    <InputLabel
+      inputWidth='200px'
+      title='Padding:'
+      onChange={(event) => {
+        onChange({ ...controlledTextValues, padding: event.target.value })
+      }}
+      inputType='text'
+      inputValue={controlledTextValues.padding}
+      placeholder='Choose padding'
     />
   </>
 )
