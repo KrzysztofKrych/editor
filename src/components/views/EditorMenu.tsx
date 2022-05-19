@@ -10,8 +10,7 @@ import {
   addDraggableTextThunkAction,
 } from '../../store/editor/editor.thunk'
 import { iconsSelector } from '../../store/icons/icons.reducer'
-import { COLORS } from '../../styles/colors'
-import { StyledDiv, StyledFlex } from '../../styles/styled-components'
+import { StyledFlex } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { getUniqId } from '../../utils/helpers'
 import { AddContainerInformations } from '../ui/AddContainerInformations'
@@ -38,6 +37,8 @@ export const EditorMenu = () => {
       }
       case DraggableType.CONTAINER: {
         // TODO MOVE TO CONST
+
+        // TODO CHECK IF POSSIBLE IS ADDING CONTAINER WITH DEFINED WIDTH AND HEIGHT
         dispatch(
           addDraggableContainerThunkAction({
             ...DEFAULT_POSITION,
@@ -83,30 +84,28 @@ export const EditorMenu = () => {
   }
 
   return (
-    <StyledDiv borderleft={`1px solid ${COLORS.PRIMARY_OPACITY}`}>
-      <StyledFlex direction='column' padding=' 0 1rem '>
-        <SelectLabel
-          onChange={(value) => {
-            setSelectedDraggableType(value as DraggableType)
-          }}
-          title='Choose new component'
-          titlePadding='1rem 0'
-          defaultValue={defaultSelectedDraggableType}
-          options={Object.values(DraggableType).map((type) => (
-            <Select.Option key={type} value={type}>
-              {type}
-            </Select.Option>
-          ))}
-        />
-        {getCurrentAdditionalInformations()}
-        <Button
-          disabled={isDisabledAddButton()}
-          onClick={handleAddDraggable}
-          style={{ margin: '1rem 0', alignSelf: 'flex-end' }}
-          type={ButtonType.PRIMARY}
-          text='Add'
-        />
-      </StyledFlex>
-    </StyledDiv>
+    <StyledFlex direction='column' padding=' 0 1rem '>
+      <SelectLabel
+        onChange={(value) => {
+          setSelectedDraggableType(value as DraggableType)
+        }}
+        title='Choose new component'
+        titlePadding='1rem 0'
+        defaultValue={defaultSelectedDraggableType}
+        options={Object.values(DraggableType).map((type) => (
+          <Select.Option key={type} value={type}>
+            {type}
+          </Select.Option>
+        ))}
+      />
+      {getCurrentAdditionalInformations()}
+      <Button
+        disabled={isDisabledAddButton()}
+        onClick={handleAddDraggable}
+        style={{ margin: '1rem 0', alignSelf: 'flex-end' }}
+        type={ButtonType.PRIMARY}
+        text='Add'
+      />
+    </StyledFlex>
   )
 }

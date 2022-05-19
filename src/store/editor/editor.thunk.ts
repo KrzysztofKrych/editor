@@ -5,11 +5,13 @@ import {
   addDraggableIcon,
   addDraggableText,
   setSelectedText,
+  toggleCurrentMenu,
   updateDraggableContainer,
   updateDraggableIcon,
   updateDraggableText,
   updateNewDraggableContainer,
 } from './editor.reducer'
+import { MenuType } from '../../utils/enums'
 
 export const addDraggableTextThunkAction =
   (text: DraggableText): AppThunk =>
@@ -57,4 +59,10 @@ export const updateNewDraggableContainerThunkAction =
   (container: DraggableContainer): AppThunk =>
   async (dispatch) => {
     dispatch(updateNewDraggableContainer(container))
+  }
+
+export const toggleMenuTypeThunkAction =
+  (type: MenuType): AppThunk =>
+  async (dispatch) => {
+    dispatch(toggleCurrentMenu(type))
   }

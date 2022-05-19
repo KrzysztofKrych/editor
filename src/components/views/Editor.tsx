@@ -4,18 +4,26 @@ import { useSelector } from 'react-redux'
 import { useAppDispatch } from '../../store'
 import { editorSelector } from '../../store/editor/editor.reducer'
 import {
+  toggleMenuTypeThunkAction,
   updateDraggableContainerThunkAction,
   updateDraggableIconThunkAction,
   updateDraggableTextThunkAction,
 } from '../../store/editor/editor.thunk'
 import { COLORS } from '../../styles/colors'
 import { StyledDiv } from '../../styles/styled-components'
+import { MenuType } from '../../utils/enums'
+import { Icon } from '../ui/Icon'
 
 export const Editor = () => {
   const textRef = useRef(null)
   const iconRef = useRef(null)
   const { draggableTexts, draggableIcons, draggableContainers } = useSelector(editorSelector)
   const dispatch = useAppDispatch()
+
+  const handleUpdateMenuView = (type: MenuType) => {
+    dispatch(toggleMenuTypeThunkAction(type))
+  }
+
   return (
     <div>
       {draggableTexts.map((text) => (
@@ -27,7 +35,13 @@ export const Editor = () => {
           bounds='parent'
           nodeRef={textRef}
         >
-          <StyledDiv style={{ display: 'inline-block' }} ref={textRef}>
+          <StyledDiv
+            style={{ display: 'inline-block' }}
+            ref={textRef}
+            onClick={() => {
+              handleUpdateMenuView(MenuType.EDIT)
+            }}
+          >
             {text.value}
           </StyledDiv>
         </Draggable>
@@ -41,8 +55,14 @@ export const Editor = () => {
             dispatch(updateDraggableIconThunkAction({ ...icon, position: { x: position.x, y: position.y } }))
           }}
         >
-          <StyledDiv style={{ display: 'inline-block' }} ref={iconRef}>
-            <span className='material-icons'>{icon.value}</span>
+          <StyledDiv
+            style={{ display: 'inline-block' }}
+            ref={iconRef}
+            onClick={() => {
+              handleUpdateMenuView(MenuType.EDIT)
+            }}
+          >
+            <Icon name={icon.value} />
           </StyledDiv>
         </Draggable>
       ))}
@@ -56,6 +76,9 @@ export const Editor = () => {
           }}
         >
           <StyledDiv
+            onClick={() => {
+              handleUpdateMenuView(MenuType.EDIT)
+            }}
             border={`1px solid ${COLORS.PRIMARY}`}
             style={{ display: 'inline-block', width: `${container.width}px`, height: `${container.height}px` }}
             ref={iconRef}

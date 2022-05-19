@@ -9,3 +9,8 @@ export enum ButtonType {
   SECONDARY = 'SECONDARY',
   DANGER = 'DANGER',
 }
+
+export enum MenuType {
+  NEW = 'NEW',
+  EDIT = 'EDIT',
+}
