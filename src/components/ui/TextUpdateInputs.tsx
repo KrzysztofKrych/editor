@@ -9,6 +9,7 @@ interface Props {
 export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
   <>
     <InputLabel
+      style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Text:'
       inputType='text'
@@ -19,6 +20,7 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
       }}
     />
     <InputLabel
+      style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Text color:'
       inputType='text'
@@ -30,6 +32,7 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
     />
 
     <InputLabel
+      style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Font weight:'
       inputType='text'
@@ -39,8 +42,20 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
         onChange({ ...controlledTextValues, fontWeight: Number(event.target.value) })
       }}
     />
+    <InputLabel
+      style={{ padding: '.5rem 0' }}
+      inputWidth='200px'
+      title='Font size:'
+      onChange={(event) => {
+        onChange({ ...controlledTextValues, fontSize: Number(event.target.value) })
+      }}
+      inputType='text'
+      inputValue={controlledTextValues.fontSize}
+      placeholder='Choose font size'
+    />
 
     <InputLabel
+      style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Background:'
       onChange={(event) => {
@@ -51,6 +66,7 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
       placeholder='Choose background color'
     />
     <InputLabel
+      style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Padding:'
       onChange={(event) => {

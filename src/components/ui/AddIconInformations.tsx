@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../store'
 import { DEFAULT_POSITION } from '../../store/editor/consts'
 import { addDraggableIconThunkAction } from '../../store/editor/editor.thunk'
 import { iconsSelector } from '../../store/icons/icons.reducer'
-import { StyledSelect } from '../../styles/styled-components'
+import { StyledDiv, StyledSelect } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { getSlicedArray, getUniqId } from '../../utils/helpers'
 import { Button } from './Button'
@@ -50,8 +50,9 @@ export const AddIconInformations = () => {
   }, [icons])
 
   return (
-    <>
+    <StyledDiv padding='1rem 0' width='100%'>
       <StyledSelect
+        padding='0 0 1rem 0'
         onChange={(value) => {
           setSelectedIcon({ ...selectedIcon, value: value as string })
         }}
@@ -78,10 +79,10 @@ export const AddIconInformations = () => {
       <Button
         disabled={!selectedIcon.value || !selectedIcon.fontSize}
         onClick={handleAddIcon}
-        style={{ margin: '1rem 0', alignSelf: 'flex-end' }}
+        style={{ margin: '1rem 0', width: '100%' }}
         type={ButtonType.PRIMARY}
         text='Add'
       />
-    </>
+    </StyledDiv>
   )
 }

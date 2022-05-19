@@ -40,6 +40,8 @@ export const Editor = () => {
               color: text.color,
               fontWeight: text.fontWeight,
               fontSize: text.fontSize,
+              background: text.background,
+              padding: text.padding,
             }}
             onClick={() => {
               handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.TEXT, id: text.id })

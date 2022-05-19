@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../store'
 import { DEFAULT_TEXT } from '../../store/editor/consts'
 import { addDraggableTextThunkAction } from '../../store/editor/editor.thunk'
 import { DraggableText } from '../../store/editor/interfaces'
+import { StyledDiv } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { getUniqId, isCssProperty } from '../../utils/helpers'
 import { Button } from './Button'
@@ -42,15 +43,15 @@ export const AddTextInformations = () => {
   }
 
   return (
-    <>
+    <StyledDiv padding='1rem 0' width='100%'>
       <TextUpdateInputs controlledTextValues={controlledTextValues} onChange={handleOnChange} />
       <Button
         disabled={!controlledTextValues.value}
         onClick={handleAddText}
-        style={{ margin: '1rem 0', alignSelf: 'flex-end' }}
+        style={{ margin: '1rem 0', width: '100%' }}
         type={ButtonType.PRIMARY}
         text='Add'
       />
-    </>
+    </StyledDiv>
   )
 }

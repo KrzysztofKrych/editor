@@ -7,6 +7,7 @@ export const StyledDiv = styled.div<{
   border?: string
   borderleft?: string
   height?: string
+  width?: string
   padding?: string
 }>`
   background: ${(props) => props.background};
@@ -14,10 +15,12 @@ export const StyledDiv = styled.div<{
   border-left: ${(props) => props.borderleft};
   height: ${(props) => props.height};
   padding: ${(props) => props.padding};
+  width: ${(props) => props.width};
 `
 
-export const StyledSelect = styled(Select)`
+export const StyledSelect = styled(Select)<{ padding?: string }>`
   width: 100%;
+  padding: ${(props) => props.padding};
 `
 
 export const StyledGrid = styled.div<{ columns: string; rows?: string; height?: string }>`
