@@ -40,7 +40,7 @@ export const Editor = () => {
             style={{ display: 'inline-block' }}
             ref={textRef}
             onClick={() => {
-              handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.TEXT })
+              handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.TEXT, id: text.id })
             }}
           >
             {text.value}
@@ -60,7 +60,7 @@ export const Editor = () => {
             style={{ display: 'inline-block' }}
             ref={iconRef}
             onClick={() => {
-              handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.ICON })
+              handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.ICON, id: icon.id })
             }}
           >
             <Icon style={{ fontSize: icon.fontSize }} name={icon.value} />
@@ -78,7 +78,7 @@ export const Editor = () => {
         >
           <StyledDiv
             onClick={() => {
-              handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.CONTAINER })
+              handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.CONTAINER, id: container.id })
             }}
             border={`1px solid ${COLORS.PRIMARY}`}
             style={{ display: 'inline-block', width: `${container.width}px`, height: `${container.height}px` }}

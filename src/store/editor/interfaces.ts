@@ -31,4 +31,5 @@ export interface DraggableContainer extends AbstractDraggable {
 export interface CurrentMenu {
   value: MenuType
   type: DraggableType | null
+  id: string
 }

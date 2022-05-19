@@ -22,6 +22,7 @@ export const initialState: EditorInitialState = {
   currentMenu: {
     value: MenuType.NEW,
     type: null,
+    id: '',
   },
 }
 
