@@ -37,7 +37,7 @@ export const Editor = () => {
           }}
         >
           <StyledDiv style={{ display: 'inline-block' }} ref={iconRef}>
-            {icon.value}
+            <span className='material-icons'>{icon.value}</span>
           </StyledDiv>
         </Draggable>
       ))}

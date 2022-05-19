@@ -1,34 +1,48 @@
 import { Select } from 'antd'
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '../../store'
 import { addDraggableIconThunkAction, addDraggableTextThunkAction } from '../../store/editor/editor.thunk'
 import { iconsSelector } from '../../store/icons/icons.reducer'
 import { StyledFlex } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
+import { getUniqId } from '../../utils/helpers'
+import { AddIconInformations } from '../ui/AddIconInformations'
 import { Button } from '../ui/Button'
 import { SelectLabel } from '../ui/SelectLabel'
 
-const defaultText = { value: `test${Date.now()}`, id: `${Date.now()}`, position: { x: 0, y: 0 } }
-const defaultIcon = { value: `someicon`, id: `${Date.now()}`, position: { x: 0, y: 0 } }
+const defaultText = { value: `test${Date.now()}`, position: { x: 0, y: 0 } }
+const defaultIcon = { value: `someicon`, position: { x: 0, y: 0 } }
 
 export const EditorMenu = () => {
   const defaultSelectedDraggableType = DraggableType.ICON
   const [selectedDraggableType, setSelectedDraggableType] = useState<DraggableType>(defaultSelectedDraggableType)
   const dispatch = useAppDispatch()
-  const { icons } = useSelector(iconsSelector)
+  const { selectedIcon } = useSelector(iconsSelector)
   const handleAddDraggable = () => {
     switch (selectedDraggableType) {
       case DraggableType.TEXT: {
-        dispatch(addDraggableTextThunkAction({ ...defaultText }))
+        dispatch(addDraggableTextThunkAction({ ...defaultText, id: getUniqId() }))
         break
       }
       case DraggableType.ICON: {
-        dispatch(addDraggableIconThunkAction({ ...defaultIcon }))
+        dispatch(addDraggableIconThunkAction({ ...defaultIcon, value: selectedIcon, id: getUniqId() }))
         break
       }
       default:
         break
+    }
+  }
+
+  const getCurrentAdditionalInformations = (): ReactElement | null => {
+    switch (selectedDraggableType) {
+      case DraggableType.TEXT:
+        return null
+      case DraggableType.ICON: {
+        return <AddIconInformations />
+      }
+      default:
+        return null
     }
   }
 
@@ -48,6 +62,7 @@ export const EditorMenu = () => {
             </Select.Option>
           ))}
         />
+        {getCurrentAdditionalInformations()}
         <Button
           onClick={handleAddDraggable}
           style={{ margin: '1rem 0', alignSelf: 'flex-end' }}
@@ -55,11 +70,6 @@ export const EditorMenu = () => {
           text='Add'
         />
       </StyledFlex>
-      {icons.map((icon) => (
-        <span key={icon} className='material-icons'>
-          {icon}
-        </span>
-      ))}
     </div>
   )
 }

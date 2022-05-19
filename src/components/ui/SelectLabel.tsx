@@ -11,7 +11,7 @@ interface Props {
   showArrow?: boolean
 }
 
-export const SelectLabel = ({ defaultValue, options, title, onChange, titlePadding, showArrow = false }: Props) => (
+export const SelectLabel = ({ defaultValue, options, title, onChange, titlePadding, showArrow = true }: Props) => (
   <>
     <StyledText padding={titlePadding} size='14' color={COLORS.PRIMARY}>
       {title}

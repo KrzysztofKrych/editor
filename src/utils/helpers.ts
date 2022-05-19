@@ -20,3 +20,8 @@ export const getButtonProps = (type: ButtonType) => {
       }
   }
 }
+
+export const getSlicedArray = <T>(arr: T[], position: { start: number; end: number }): T[] =>
+  arr.slice(position.start, position.end)
+
+export const getUniqId = () => `id_${Math.random().toString(16).slice(2)}`
