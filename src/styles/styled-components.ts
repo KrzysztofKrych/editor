@@ -1,4 +1,4 @@
-import { Button, Select, Typography } from 'antd'
+import { Button, Input, Select, Typography } from 'antd'
 import styled from 'styled-components'
 import { COLORS } from './colors'
 
@@ -65,5 +65,14 @@ export const StyledButton = styled(Button)<{ color?: string; background?: string
   &:focus {
     color: ${(props) => (props.color ? props.color : COLORS.GREEN)};
     background: ${(props) => (props.background ? props.background : COLORS.PRIMARY)};
+  }
+`
+export const StyledInput = styled(Input)<{ radius?: string }>`
+  border-radius: ${(props) => (props.radius ? `${props.radius}px` : '0px')};
+  :active,
+  :focus,
+  :hover,
+  :focus-within {
+    border: 1px solid ${COLORS.GREEN} !important;
   }
 `

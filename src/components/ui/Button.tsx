@@ -8,12 +8,13 @@ interface Props {
   type: ButtonType
   onClick: () => void
   style?: CSSProperties
+  disabled?: boolean
 }
 
-export const Button = ({ text, type, style, onClick }: Props) => {
+export const Button = ({ text, type, style, onClick, disabled }: Props) => {
   const buttonProps = getButtonProps(type)
   return (
-    <StyledButton onClick={onClick} style={style} {...buttonProps}>
+    <StyledButton disabled={disabled} onClick={onClick} style={style} {...buttonProps}>
       {text}
     </StyledButton>
   )

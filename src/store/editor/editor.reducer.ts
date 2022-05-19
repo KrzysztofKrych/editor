@@ -5,11 +5,13 @@ import { DraggableIcon, DraggableText } from './interfaces'
 export interface EditorInitialState {
   draggableTexts: DraggableText[]
   draggableIcons: DraggableIcon[]
+  selectedText: string
 }
 
 export const initialState: EditorInitialState = {
   draggableTexts: [],
   draggableIcons: [],
+  selectedText: '',
 }
 
 const reducerName = 'editor'
@@ -40,10 +42,14 @@ export const editorSlice = createSlice({
         return text
       })
     },
+    setSelectedText: (state, { payload }: PayloadAction<string>) => {
+      state.selectedText = payload
+    },
   },
 })
 
-export const { addDraggableText, updateDraggableText, addDraggableIcon, updateDraggableIcon } = editorSlice.actions
+export const { addDraggableText, updateDraggableText, addDraggableIcon, updateDraggableIcon, setSelectedText } =
+  editorSlice.actions
 
 export const editorSelector = (state: RootState) => state.editorReducer
 
