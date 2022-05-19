@@ -37,7 +37,7 @@ export const Editor = () => {
           nodeRef={textRef}
         >
           <StyledDiv
-            style={{ display: 'inline-block', color: text.color }}
+            style={{ display: 'inline-block', color: text.color, fontWeight: text.fontWeight, fontSize: text.fontSize }}
             ref={textRef}
             onClick={() => {
               handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.TEXT, id: text.id })

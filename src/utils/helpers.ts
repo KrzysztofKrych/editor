@@ -27,3 +27,5 @@ export const getSlicedArray = <T>(arr: T[], position: { start: number; end: numb
 export const getUniqId = () => `id_${Math.random().toString(16).slice(2)}`
 
 export const isColor = (value: string) => CSS.supports('color', value)
+export const isFontWeight = (value: string) => CSS.supports('font-weight', value)
+export const isFontSize = (value: string) => CSS.supports('font-size', `${value}px`)

@@ -11,7 +11,7 @@ export const EditPanel = () => {
   const { currentMenu } = useAppSelector(editorSelector)
   return (
     <StyledFlex padding='1rem' direction='column' width='100%'>
-      <StyledFlex justifycontent='space-between' width='100%'>
+      <StyledFlex width='100%' justifycontent='space-between'>
         <Icon
           onClick={() => {
             dispatch(toggleCurrentMenu({ value: MenuType.NEW, type: null, id: '' }))
@@ -22,6 +22,7 @@ export const EditPanel = () => {
         <StyledText size='14' color={COLORS.PRIMARY}>
           Edit component
         </StyledText>
+        <div />
       </StyledFlex>
       <StyledFlex padding='1rem 0' width='100%'>
         {currentMenu.type === DraggableType.ICON && <EditIconInformations />}

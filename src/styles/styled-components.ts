@@ -70,7 +70,8 @@ export const StyledButton = styled(Button)<{ color?: string; background?: string
     background: ${(props) => (props.background ? props.background : COLORS.PRIMARY)};
   }
 `
-export const StyledInput = styled(Input)<{ radius?: string }>`
+export const StyledInput = styled(Input)<{ radius?: string; width?: string }>`
+  width: ${(props) => props.width};
   border-radius: ${(props) => (props.radius ? `${props.radius}px` : '0px')};
   :active,
   :focus,

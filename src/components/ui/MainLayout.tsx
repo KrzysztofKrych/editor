@@ -10,7 +10,7 @@ import { EditPanel } from '../views/EditPanel'
 export const MainLayout = () => {
   const { currentMenu } = useAppSelector(editorSelector)
   return (
-    <StyledGrid columns='5fr 1fr'>
+    <StyledGrid columns='4fr 1fr'>
       <Editor />
       <StyledDiv borderleft={`1px solid ${COLORS.PRIMARY_OPACITY}`}>
         {currentMenu.value === MenuType.NEW && <EditorMenu />}
