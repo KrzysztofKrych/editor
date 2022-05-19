@@ -4,6 +4,7 @@ import { COLORS } from '../../styles/colors'
 import { StyledFlex, StyledText } from '../../styles/styled-components'
 import { DraggableType, MenuType } from '../../utils/enums'
 import { EditIconInformations } from '../ui/EditIconInformations'
+import { EditTextInformations } from '../ui/EditTextInformations'
 import { Icon } from '../ui/Icon'
 
 export const EditPanel = () => {
@@ -26,7 +27,7 @@ export const EditPanel = () => {
       </StyledFlex>
       <StyledFlex padding='1rem 0' width='100%'>
         {currentMenu.type === DraggableType.ICON && <EditIconInformations />}
-        {currentMenu.type === DraggableType.TEXT && <div>text</div>}
+        {currentMenu.type === DraggableType.TEXT && <EditTextInformations />}
         {currentMenu.type === DraggableType.CONTAINER && <div>container</div>}
       </StyledFlex>
     </StyledFlex>
