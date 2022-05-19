@@ -33,5 +33,5 @@ export const DEFAULT_TEXT: DraggableText = {
   type: DraggableType.TEXT,
   value: '',
   padding: '',
-  background: '',
+  background: COLORS.WHITE,
 }
