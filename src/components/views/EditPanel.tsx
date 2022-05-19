@@ -3,6 +3,7 @@ import { editorSelector, toggleCurrentMenu } from '../../store/editor/editor.red
 import { COLORS } from '../../styles/colors'
 import { StyledFlex, StyledText } from '../../styles/styled-components'
 import { DraggableType, MenuType } from '../../utils/enums'
+import { EditContainerInformations } from '../ui/EditContainerInformations'
 import { EditIconInformations } from '../ui/EditIconInformations'
 import { EditTextInformations } from '../ui/EditTextInformations'
 import { Icon } from '../ui/Icon'
@@ -28,7 +29,7 @@ export const EditPanel = () => {
       <StyledFlex padding='1rem 0' width='100%'>
         {currentMenu.type === DraggableType.ICON && <EditIconInformations />}
         {currentMenu.type === DraggableType.TEXT && <EditTextInformations />}
-        {currentMenu.type === DraggableType.CONTAINER && <div>container</div>}
+        {currentMenu.type === DraggableType.CONTAINER && <EditContainerInformations />}
       </StyledFlex>
     </StyledFlex>
   )

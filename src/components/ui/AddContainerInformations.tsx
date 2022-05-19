@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { useAppDispatch } from '../../store'
 import { DEFAULT_CONTAINER, DEFAULT_POSITION } from '../../store/editor/consts'
 import { addDraggableContainerThunkAction } from '../../store/editor/editor.thunk'
+import { DraggableContainer } from '../../store/editor/interfaces'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { getUniqId } from '../../utils/helpers'
 import { Button } from './Button'
-import { InputLabel } from './InputLabel'
+import { ContainerUpdateInputs } from './ContainerUpdateInputs'
 
 export const AddContainerInformations = () => {
   const dispatch = useAppDispatch()
@@ -22,29 +23,14 @@ export const AddContainerInformations = () => {
       })
     )
   }
+
+  const handleOnChange = (container: DraggableContainer) => {
+    setSelectedContainer(container)
+  }
+
   return (
     <>
-      <InputLabel
-        inputWidth='200px'
-        title='Width:'
-        inputType='number'
-        inputValue={selectedContainer.width}
-        placeholder='Width of container'
-        onChange={(event) => {
-          setSelectedContainer({ ...selectedContainer, width: Number(event.target.value) })
-        }}
-      />
-
-      <InputLabel
-        inputWidth='200px'
-        title='Height:'
-        inputType='number'
-        inputValue={selectedContainer.height}
-        placeholder='Height of container'
-        onChange={(event) => {
-          setSelectedContainer({ ...selectedContainer, height: Number(event.target.value) })
-        }}
-      />
+      <ContainerUpdateInputs controlledContainerValues={selectedContainer} onChange={handleOnChange} />
       <Button
         disabled={!selectedContainer.width || !selectedContainer.height}
         onClick={handleAddContainer}
