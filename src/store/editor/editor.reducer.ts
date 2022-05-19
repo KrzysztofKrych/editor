@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '..'
 import { MenuType } from '../../utils/enums'
-import { DEFAULT_CONTAINER } from './consts'
+import { DEFAULT_CONTAINER, DEFAULT_TEXT } from './consts'
 import { DraggableContainer, DraggableIcon, DraggableText, CurrentMenu } from './interfaces'
 
 export interface EditorInitialState {
   draggableTexts: DraggableText[]
   draggableIcons: DraggableIcon[]
   draggableContainers: DraggableContainer[]
-  selectedText: string
+  selectedText: DraggableText
   newContainer: DraggableContainer
   currentMenu: CurrentMenu
 }
@@ -17,7 +17,7 @@ export const initialState: EditorInitialState = {
   draggableTexts: [],
   draggableIcons: [],
   draggableContainers: [],
-  selectedText: '',
+  selectedText: DEFAULT_TEXT,
   newContainer: DEFAULT_CONTAINER,
   currentMenu: {
     value: MenuType.NEW,
@@ -34,6 +34,7 @@ export const editorSlice = createSlice({
   reducers: {
     addDraggableText: (state, { payload }: PayloadAction<DraggableText>) => {
       state.draggableTexts = [...state.draggableTexts, payload]
+      state.selectedText = DEFAULT_TEXT
     },
     updateDraggableText: (state, { payload }: PayloadAction<DraggableText>) => {
       state.draggableTexts = state.draggableTexts.map((text) => {
@@ -54,7 +55,7 @@ export const editorSlice = createSlice({
         return text
       })
     },
-    setSelectedText: (state, { payload }: PayloadAction<string>) => {
+    updateSelectedText: (state, { payload }: PayloadAction<DraggableText>) => {
       state.selectedText = payload
     },
     addDraggableContainer: (state, { payload }: PayloadAction<DraggableContainer>) => {
@@ -82,7 +83,7 @@ export const {
   updateDraggableText,
   addDraggableIcon,
   updateDraggableIcon,
-  setSelectedText,
+  updateSelectedText,
   addDraggableContainer,
   updateDraggableContainer,
   updateNewDraggableContainer,

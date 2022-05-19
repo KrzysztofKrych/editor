@@ -1,10 +1,14 @@
 import { Select } from 'antd'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
+import { DEFAULT_POSITION } from '../../store/editor/consts'
+import { addDraggableIconThunkAction } from '../../store/editor/editor.thunk'
 import { iconsSelector } from '../../store/icons/icons.reducer'
 import { setSelectedIconThunkAction } from '../../store/icons/icons.thunk'
 import { StyledInput, StyledSelect } from '../../styles/styled-components'
-import { getSlicedArray } from '../../utils/helpers'
+import { ButtonType, DraggableType } from '../../utils/enums'
+import { getSlicedArray, getUniqId } from '../../utils/helpers'
+import { Button } from './Button'
 
 export const AddIconInformations = () => {
   const { icons, selectedIcon } = useAppSelector(iconsSelector)
@@ -19,6 +23,17 @@ export const AddIconInformations = () => {
   const handleSearch = (value: string) => {
     const filtred = icons.filter((icon) => icon.includes(value))
     handleSetIcons(filtred)
+  }
+
+  const handleAddIcon = () => {
+    dispatch(
+      addDraggableIconThunkAction({
+        ...DEFAULT_POSITION,
+        type: DraggableType.ICON,
+        ...selectedIcon,
+        id: getUniqId(),
+      })
+    )
   }
 
   useEffect(() => {
@@ -49,6 +64,13 @@ export const AddIconInformations = () => {
         }
         type='number'
         placeholder='Size of icon'
+      />
+      <Button
+        disabled={!selectedIcon.value || !selectedIcon.fontSize}
+        onClick={handleAddIcon}
+        style={{ margin: '1rem 0', alignSelf: 'flex-end' }}
+        type={ButtonType.PRIMARY}
+        text='Add'
       />
     </>
   )

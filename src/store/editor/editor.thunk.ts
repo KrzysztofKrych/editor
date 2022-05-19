@@ -4,12 +4,12 @@ import {
   addDraggableContainer,
   addDraggableIcon,
   addDraggableText,
-  setSelectedText,
   toggleCurrentMenu,
   updateDraggableContainer,
   updateDraggableIcon,
   updateDraggableText,
   updateNewDraggableContainer,
+  updateSelectedText,
 } from './editor.reducer'
 
 export const addDraggableTextThunkAction =
@@ -36,10 +36,10 @@ export const updateDraggableIconThunkAction =
     dispatch(updateDraggableIcon(icon))
   }
 
-export const setSelectedTextThunkAction =
-  (text: string): AppThunk =>
+export const updateSelectedTextThunkAction =
+  (text: DraggableText): AppThunk =>
   async (dispatch) => {
-    dispatch(setSelectedText(text))
+    dispatch(updateSelectedText(text))
   }
 
 export const addDraggableContainerThunkAction =

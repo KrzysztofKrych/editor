@@ -24,9 +24,9 @@ export const EditPanel = () => {
         </StyledText>
       </StyledFlex>
       <StyledFlex padding='1rem 0' width='100%'>
-        {currentMenu.type === DraggableType.CONTAINER && <div>container</div>}
         {currentMenu.type === DraggableType.ICON && <EditIconInformations />}
         {currentMenu.type === DraggableType.TEXT && <div>text</div>}
+        {currentMenu.type === DraggableType.CONTAINER && <div>container</div>}
       </StyledFlex>
     </StyledFlex>
   )

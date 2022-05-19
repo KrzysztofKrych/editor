@@ -25,3 +25,5 @@ export const getSlicedArray = <T>(arr: T[], position: { start: number; end: numb
   arr.slice(position.start, position.end)
 
 export const getUniqId = () => `id_${Math.random().toString(16).slice(2)}`
+
+export const isColor = (value: string) => CSS.supports('color', value)
