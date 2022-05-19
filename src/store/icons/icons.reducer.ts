@@ -3,12 +3,10 @@ import { RootState } from '..'
 
 export interface IconsInitialState {
   icons: string[]
-  selectedIcon: string
 }
 
 export const initialState: IconsInitialState = {
   icons: [],
-  selectedIcon: '',
 }
 
 const reducerName = 'icons'
@@ -20,13 +18,10 @@ export const iconsSlice = createSlice({
     setIcons: (state, { payload }: PayloadAction<string[]>) => {
       state.icons = payload
     },
-    setSelectedIcon: (state, { payload }: PayloadAction<string>) => {
-      state.selectedIcon = payload
-    },
   },
 })
 
-export const { setIcons, setSelectedIcon } = iconsSlice.actions
+export const { setIcons } = iconsSlice.actions
 
 export const iconsSelector = (state: RootState) => state.iconsReducer
 

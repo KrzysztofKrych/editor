@@ -10,6 +10,8 @@ function App() {
   useEffect(() => {
     IconService.getIcons(dispatch)
   }, [])
+
+  // TODO check for mobile width
   return (
     <div className='App'>
       <MainLayout />
