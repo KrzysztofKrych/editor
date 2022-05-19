@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import Draggable from 'react-draggable'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '../../store'
@@ -16,9 +15,6 @@ import { DraggableType, MenuType } from '../../utils/enums'
 import { Icon } from '../ui/Icon'
 
 export const Editor = () => {
-  const textRef = useRef(null)
-  const iconRef = useRef(null)
-  const containerRef = useRef(null)
   const { draggableTexts, draggableIcons, draggableContainers } = useSelector(editorSelector)
   const dispatch = useAppDispatch()
 
@@ -27,7 +23,7 @@ export const Editor = () => {
   }
 
   return (
-    <div>
+    <StyledDiv>
       {draggableTexts.map((text) => (
         <Draggable
           onStop={(event, position) => {
@@ -35,11 +31,16 @@ export const Editor = () => {
           }}
           key={text.id}
           bounds='parent'
-          nodeRef={textRef}
         >
           <StyledDiv
-            style={{ display: 'inline-block', color: text.color, fontWeight: text.fontWeight, fontSize: text.fontSize }}
-            ref={textRef}
+            className={`.${text.id}`}
+            style={{
+              position: 'absolute',
+              display: 'inline-block',
+              color: text.color,
+              fontWeight: text.fontWeight,
+              fontSize: text.fontSize,
+            }}
             onClick={() => {
               handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.TEXT, id: text.id })
             }}
@@ -52,14 +53,12 @@ export const Editor = () => {
         <Draggable
           key={icon.id}
           bounds='parent'
-          nodeRef={iconRef}
           onStop={(event, position) => {
             dispatch(updateDraggableIconThunkAction({ ...icon, position: { x: position.x, y: position.y } }))
           }}
         >
           <StyledDiv
-            style={{ display: 'inline-block' }}
-            ref={iconRef}
+            style={{ position: 'absolute', display: 'inline-block' }}
             onClick={() => {
               handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.ICON, id: icon.id })
             }}
@@ -72,7 +71,6 @@ export const Editor = () => {
         <Draggable
           key={container.id}
           bounds='parent'
-          nodeRef={containerRef}
           onStop={(event, position) => {
             dispatch(updateDraggableContainerThunkAction({ ...container, position: { x: position.x, y: position.y } }))
           }}
@@ -82,11 +80,15 @@ export const Editor = () => {
               handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.CONTAINER, id: container.id })
             }}
             border={`1px solid ${COLORS.PRIMARY}`}
-            style={{ display: 'inline-block', width: `${container.width}px`, height: `${container.height}px` }}
-            ref={containerRef}
+            style={{
+              position: 'absolute',
+              display: 'inline-block',
+              width: `${container.width}px`,
+              height: `${container.height}px`,
+            }}
           />
         </Draggable>
       ))}
-    </div>
+    </StyledDiv>
   )
 }
