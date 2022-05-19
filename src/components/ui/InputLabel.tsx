@@ -11,6 +11,7 @@ interface Props {
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void
   inputWidth?: string
   style?: CSSProperties
+  inputStyle?: CSSProperties
 }
 
 export const InputLabel = ({
@@ -22,12 +23,14 @@ export const InputLabel = ({
   onBlur,
   inputWidth,
   style,
+  inputStyle,
 }: Props) => (
   <StyledFlex justifycontent='space-between' width='100%' style={style}>
     <StyledText padding='0 .5rem 0  0' style={{ whiteSpace: 'nowrap' }} size='16' color={COLORS.PRIMARY}>
       {title}
     </StyledText>
     <StyledInput
+      style={inputStyle}
       width={inputWidth}
       onBlur={onBlur}
       value={inputValue}

@@ -8,6 +8,7 @@ import { DraggableText } from '../../store/editor/interfaces'
 import { COLORS } from '../../styles/colors'
 import { StyledFlex, StyledText } from '../../styles/styled-components'
 import { ButtonType, MenuType } from '../../utils/enums'
+import { isCssProperty } from '../../utils/helpers'
 import { Button } from './Button'
 import { TextUpdateInputs } from './TextUpdateInputs'
 
@@ -29,6 +30,17 @@ export const EditTextInformations = () => {
     dispatch(deleteDraggableTextThunkAction(updatedTextValues.id))
     dispatch(toggleCurrentMenu({ value: MenuType.NEW, type: null, id: '' }))
   }
+
+  const isDisabled = (): boolean =>
+    !updatedTextValues.value ||
+    !isCssProperty('color', updatedTextValues.color) ||
+    !isCssProperty('font-weight', String(updatedTextValues.fontWeight)) ||
+    !isCssProperty('font-size', String(`${updatedTextValues.fontSize}px`)) ||
+    !isCssProperty('background', updatedTextValues.background) ||
+    updatedTextValues.padding
+      ? !isCssProperty('padding', updatedTextValues.padding)
+      : false
+
   return (
     <>
       <StyledFlex direction='column' width='100%'>
@@ -36,7 +48,7 @@ export const EditTextInformations = () => {
 
         <StyledFlex justifycontent='space-between' width='100%'>
           <Button
-            disabled={!updatedTextValues.value}
+            disabled={isDisabled()}
             onClick={handleEditText}
             style={{ margin: '1rem 0', alignSelf: 'flex-end' }}
             type={ButtonType.PRIMARY}

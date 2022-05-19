@@ -1,4 +1,6 @@
 import { DraggableText } from '../../store/editor/interfaces'
+import { COLORS } from '../../styles/colors'
+import { isCssProperty } from '../../utils/helpers'
 import { InputLabel } from './InputLabel'
 
 interface Props {
@@ -20,6 +22,9 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
       }}
     />
     <InputLabel
+      inputStyle={{
+        border: !isCssProperty('color', controlledTextValues.color) ? `1px solid ${COLORS.RED}` : '',
+      }}
       style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Text color:'
@@ -32,6 +37,9 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
     />
 
     <InputLabel
+      inputStyle={{
+        border: !isCssProperty('font-weight', String(controlledTextValues.fontWeight)) ? `1px solid ${COLORS.RED}` : '',
+      }}
       style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Font weight:'
@@ -43,18 +51,26 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
       }}
     />
     <InputLabel
+      inputStyle={{
+        border: !isCssProperty('font-size', String(`${controlledTextValues.fontSize}px`))
+          ? `1px solid ${COLORS.RED}`
+          : '',
+      }}
       style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Font size:'
       onChange={(event) => {
         onChange({ ...controlledTextValues, fontSize: Number(event.target.value) })
       }}
-      inputType='text'
+      inputType='number'
       inputValue={controlledTextValues.fontSize}
       placeholder='Choose font size'
     />
 
     <InputLabel
+      inputStyle={{
+        border: !isCssProperty('background', controlledTextValues.background) ? `1px solid ${COLORS.RED}` : '',
+      }}
       style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Background:'
@@ -66,6 +82,12 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
       placeholder='Choose background color'
     />
     <InputLabel
+      inputStyle={{
+        border:
+          controlledTextValues.padding && !isCssProperty('padding', controlledTextValues.padding)
+            ? `1px solid ${COLORS.RED}`
+            : '',
+      }}
       style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Padding:'

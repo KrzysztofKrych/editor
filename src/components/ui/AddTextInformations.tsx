@@ -42,11 +42,21 @@ export const AddTextInformations = () => {
     setControlledTextValue(text)
   }
 
+  const isDisabled = (): boolean =>
+    !controlledTextValues.value ||
+    !isCssProperty('color', controlledTextValues.color) ||
+    !isCssProperty('font-weight', String(controlledTextValues.fontWeight)) ||
+    !isCssProperty('font-size', String(`${controlledTextValues.fontSize}px`)) ||
+    !isCssProperty('background', controlledTextValues.background) ||
+    controlledTextValues.padding
+      ? !isCssProperty('padding', controlledTextValues.padding)
+      : false
+
   return (
     <StyledDiv padding='1rem 0' width='100%'>
       <TextUpdateInputs controlledTextValues={controlledTextValues} onChange={handleOnChange} />
       <Button
-        disabled={!controlledTextValues.value}
+        disabled={isDisabled()}
         onClick={handleAddText}
         style={{ margin: '1rem 0', width: '100%' }}
         type={ButtonType.PRIMARY}
