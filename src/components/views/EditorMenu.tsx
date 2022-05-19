@@ -27,7 +27,7 @@ export const EditorMenu = () => {
   }
 
   return (
-    <StyledFlex direction='column' padding=' 0 1rem '>
+    <StyledFlex direction='column' padding='0 1rem ' width='100%'>
       <SelectLabel
         onChange={(value) => {
           setSelectedDraggableType(value as DraggableType)
