@@ -32,4 +32,6 @@ export const DEFAULT_TEXT: DraggableText = {
   id: '',
   type: DraggableType.TEXT,
   value: '',
+  padding: '',
+  background: '',
 }

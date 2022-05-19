@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../store'
 import { DEFAULT_CONTAINER, DEFAULT_POSITION } from '../../store/editor/consts'
 import { addDraggableContainerThunkAction } from '../../store/editor/editor.thunk'
 import { DraggableContainer } from '../../store/editor/interfaces'
+import { StyledDiv } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { getUniqId } from '../../utils/helpers'
 import { Button } from './Button'
@@ -29,15 +30,15 @@ export const AddContainerInformations = () => {
   }
 
   return (
-    <>
+    <StyledDiv padding='1rem 0' width='100%'>
       <ContainerUpdateInputs controlledContainerValues={selectedContainer} onChange={handleOnChange} />
       <Button
         disabled={!selectedContainer.width || !selectedContainer.height}
         onClick={handleAddContainer}
-        style={{ margin: '1rem 0', alignSelf: 'flex-end' }}
+        style={{ margin: '1rem 0', width: '100%' }}
         type={ButtonType.PRIMARY}
         text='Add'
       />
-    </>
+    </StyledDiv>
   )
 }

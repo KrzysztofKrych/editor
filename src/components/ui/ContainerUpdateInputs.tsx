@@ -9,6 +9,7 @@ interface Props {
 export const ContainerUpdateInputs = ({ controlledContainerValues, onChange }: Props) => (
   <>
     <InputLabel
+      style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Width:'
       inputType='number'
@@ -20,6 +21,7 @@ export const ContainerUpdateInputs = ({ controlledContainerValues, onChange }: P
     />
 
     <InputLabel
+      style={{ padding: '.5rem 0' }}
       inputWidth='200px'
       title='Height:'
       inputType='number'
