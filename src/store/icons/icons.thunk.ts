@@ -1,5 +1,6 @@
 import { AppThunk } from '..'
 import { setIcons, setSelectedIcon } from './icons.reducer'
+import { Icon } from './interfaces'
 
 export const setIconsThunkAction =
   (icons: string[]): AppThunk =>
@@ -8,7 +9,7 @@ export const setIconsThunkAction =
   }
 
 export const setSelectedIconThunkAction =
-  (icon: string): AppThunk =>
+  (icon: Icon): AppThunk =>
   async (dispatch) => {
     dispatch(setSelectedIcon(icon))
   }

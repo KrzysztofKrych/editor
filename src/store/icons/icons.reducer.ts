@@ -1,14 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '..'
+import { Icon } from './interfaces'
 
 export interface IconsInitialState {
   icons: string[]
-  selectedIcon: string
+  selectedIcon: Icon
 }
 
 export const initialState: IconsInitialState = {
   icons: [],
-  selectedIcon: '',
+  selectedIcon: {
+    fontSize: 0,
+    value: '',
+  },
 }
 
 const reducerName = 'icons'
@@ -20,7 +24,7 @@ export const iconsSlice = createSlice({
     setIcons: (state, { payload }: PayloadAction<string[]>) => {
       state.icons = payload
     },
-    setSelectedIcon: (state, { payload }: PayloadAction<string>) => {
+    setSelectedIcon: (state, { payload }: PayloadAction<Icon>) => {
       state.selectedIcon = payload
     },
   },

@@ -13,6 +13,7 @@ export interface DraggableText extends AbstractDraggable {
 
 export interface DraggableIcon extends AbstractDraggable {
   value: string
+  fontSize: number
 }
 
 export interface DraggableContainer extends AbstractDraggable {

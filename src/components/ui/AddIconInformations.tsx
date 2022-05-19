@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { iconsSelector } from '../../store/icons/icons.reducer'
 import { setSelectedIconThunkAction } from '../../store/icons/icons.thunk'
-import { StyledSelect } from '../../styles/styled-components'
+import { StyledInput, StyledSelect } from '../../styles/styled-components'
 import { getSlicedArray } from '../../utils/helpers'
 
 export const AddIconInformations = () => {
-  const { icons } = useAppSelector(iconsSelector)
+  const { icons, selectedIcon } = useAppSelector(iconsSelector)
   const [filtredIcons, setFiltredIcons] = useState<string[]>([])
   const dispatch = useAppDispatch()
 
@@ -28,19 +28,28 @@ export const AddIconInformations = () => {
   }, [icons])
 
   return (
-    <StyledSelect
-      onChange={(value) => {
-        dispatch(setSelectedIconThunkAction(value as string))
-      }}
-      onSearch={handleSearch}
-      showSearch
-      placeholder='Search...'
-    >
-      {filtredIcons.map((icon) => (
-        <Select.Option key={icon} value={icon}>
-          {icon}
-        </Select.Option>
-      ))}
-    </StyledSelect>
+    <>
+      <StyledSelect
+        onChange={(value) => {
+          dispatch(setSelectedIconThunkAction({ ...selectedIcon, value: value as string }))
+        }}
+        onSearch={handleSearch}
+        showSearch
+        placeholder='Search...'
+      >
+        {filtredIcons.map((icon) => (
+          <Select.Option key={icon} value={icon}>
+            {icon}
+          </Select.Option>
+        ))}
+      </StyledSelect>
+      <StyledInput
+        onChange={(event) =>
+          dispatch(setSelectedIconThunkAction({ ...selectedIcon, fontSize: Number(event.target.value) }))
+        }
+        type='number'
+        placeholder='Size of icon'
+      />
+    </>
   )
 }

@@ -62,7 +62,7 @@ export const Editor = () => {
               handleUpdateMenuView(MenuType.EDIT)
             }}
           >
-            <Icon name={icon.value} />
+            <Icon style={{ fontSize: icon.fontSize }} name={icon.value} />
           </StyledDiv>
         </Draggable>
       ))}
