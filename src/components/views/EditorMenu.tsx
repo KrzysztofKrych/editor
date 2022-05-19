@@ -2,34 +2,51 @@ import { Select } from 'antd'
 import { ReactElement, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '../../store'
+import { DEFAULT_POSITION } from '../../store/editor/consts'
 import { editorSelector } from '../../store/editor/editor.reducer'
-import { addDraggableIconThunkAction, addDraggableTextThunkAction } from '../../store/editor/editor.thunk'
+import {
+  addDraggableContainerThunkAction,
+  addDraggableIconThunkAction,
+  addDraggableTextThunkAction,
+} from '../../store/editor/editor.thunk'
 import { iconsSelector } from '../../store/icons/icons.reducer'
-import { StyledFlex } from '../../styles/styled-components'
+import { COLORS } from '../../styles/colors'
+import { StyledDiv, StyledFlex } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { getUniqId } from '../../utils/helpers'
+import { AddContainerInformations } from '../ui/AddContainerInformations'
 import { AddIconInformations } from '../ui/AddIconInformations'
 import { AddTextInformations } from '../ui/AddTextInformations'
 import { Button } from '../ui/Button'
 import { SelectLabel } from '../ui/SelectLabel'
-
-const defaultText = { value: `test${Date.now()}`, position: { x: 0, y: 0 } }
-const defaultIcon = { value: `someicon`, position: { x: 0, y: 0 } }
 
 export const EditorMenu = () => {
   const defaultSelectedDraggableType = DraggableType.ICON
   const [selectedDraggableType, setSelectedDraggableType] = useState<DraggableType>(defaultSelectedDraggableType)
   const dispatch = useAppDispatch()
   const { selectedIcon } = useSelector(iconsSelector)
-  const { selectedText } = useSelector(editorSelector)
+  const { selectedText, newContainer } = useSelector(editorSelector)
   const handleAddDraggable = () => {
     switch (selectedDraggableType) {
       case DraggableType.TEXT: {
-        dispatch(addDraggableTextThunkAction({ ...defaultText, value: selectedText, id: getUniqId() }))
+        dispatch(addDraggableTextThunkAction({ ...DEFAULT_POSITION, value: selectedText, id: getUniqId() }))
         break
       }
       case DraggableType.ICON: {
-        dispatch(addDraggableIconThunkAction({ ...defaultIcon, value: selectedIcon, id: getUniqId() }))
+        dispatch(addDraggableIconThunkAction({ ...DEFAULT_POSITION, value: selectedIcon, id: getUniqId() }))
+        break
+      }
+      case DraggableType.CONTAINER: {
+        // TODO MOVE TO CONST
+        dispatch(
+          addDraggableContainerThunkAction({
+            ...DEFAULT_POSITION,
+            id: getUniqId(),
+            width: newContainer.width,
+            height: newContainer.height,
+            children: { icons: [], texts: [] },
+          })
+        )
         break
       }
       default:
@@ -44,6 +61,9 @@ export const EditorMenu = () => {
       case DraggableType.ICON: {
         return <AddIconInformations />
       }
+      case DraggableType.CONTAINER: {
+        return <AddContainerInformations />
+      }
       default:
         return null
     }
@@ -55,13 +75,15 @@ export const EditorMenu = () => {
         return !selectedText
       case DraggableType.ICON:
         return !selectedIcon
+      case DraggableType.CONTAINER:
+        return !newContainer.width || !newContainer.height
       default:
         return false
     }
   }
 
   return (
-    <div>
+    <StyledDiv borderleft={`1px solid ${COLORS.PRIMARY_OPACITY}`}>
       <StyledFlex direction='column' padding=' 0 1rem '>
         <SelectLabel
           onChange={(value) => {
@@ -85,6 +107,6 @@ export const EditorMenu = () => {
           text='Add'
         />
       </StyledFlex>
-    </div>
+    </StyledDiv>
   )
 }
