@@ -1,15 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '..'
 import { MenuType } from '../../utils/enums'
-import { DEFAULT_CONTAINER, DEFAULT_TEXT } from './consts'
 import { DraggableContainer, DraggableIcon, DraggableText, CurrentMenu } from './interfaces'
 
 export interface EditorInitialState {
   draggableTexts: DraggableText[]
   draggableIcons: DraggableIcon[]
   draggableContainers: DraggableContainer[]
-  selectedText: DraggableText
-  newContainer: DraggableContainer
   currentMenu: CurrentMenu
 }
 
@@ -17,8 +14,6 @@ export const initialState: EditorInitialState = {
   draggableTexts: [],
   draggableIcons: [],
   draggableContainers: [],
-  selectedText: DEFAULT_TEXT,
-  newContainer: DEFAULT_CONTAINER,
   currentMenu: {
     value: MenuType.NEW,
     type: null,
@@ -34,7 +29,6 @@ export const editorSlice = createSlice({
   reducers: {
     addDraggableText: (state, { payload }: PayloadAction<DraggableText>) => {
       state.draggableTexts = [...state.draggableTexts, payload]
-      state.selectedText = DEFAULT_TEXT
     },
     updateDraggableText: (state, { payload }: PayloadAction<DraggableText>) => {
       state.draggableTexts = state.draggableTexts.map((text) => {
@@ -55,9 +49,6 @@ export const editorSlice = createSlice({
         return text
       })
     },
-    updateSelectedText: (state, { payload }: PayloadAction<DraggableText>) => {
-      state.selectedText = payload
-    },
     addDraggableContainer: (state, { payload }: PayloadAction<DraggableContainer>) => {
       state.draggableContainers = [...state.draggableContainers, payload]
     },
@@ -68,9 +59,6 @@ export const editorSlice = createSlice({
         }
         return text
       })
-    },
-    updateNewDraggableContainer: (state, { payload }: PayloadAction<DraggableContainer>) => {
-      state.newContainer = payload
     },
     toggleCurrentMenu: (state, { payload }: PayloadAction<CurrentMenu>) => {
       state.currentMenu = payload
@@ -83,10 +71,8 @@ export const {
   updateDraggableText,
   addDraggableIcon,
   updateDraggableIcon,
-  updateSelectedText,
   addDraggableContainer,
   updateDraggableContainer,
-  updateNewDraggableContainer,
   toggleCurrentMenu,
 } = editorSlice.actions
 

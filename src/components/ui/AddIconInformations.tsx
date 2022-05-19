@@ -4,10 +4,11 @@ import { useAppDispatch, useAppSelector } from '../../store'
 import { DEFAULT_POSITION } from '../../store/editor/consts'
 import { addDraggableIconThunkAction } from '../../store/editor/editor.thunk'
 import { iconsSelector } from '../../store/icons/icons.reducer'
-import { StyledInput, StyledSelect } from '../../styles/styled-components'
+import { StyledSelect } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { getSlicedArray, getUniqId } from '../../utils/helpers'
 import { Button } from './Button'
+import { InputLabel } from './InputLabel'
 
 const DEFAULT_ICON = {
   fontSize: 0,
@@ -65,11 +66,14 @@ export const AddIconInformations = () => {
           </Select.Option>
         ))}
       </StyledSelect>
-      <StyledInput
-        value={selectedIcon.fontSize}
-        onChange={(event) => setSelectedIcon({ ...selectedIcon, fontSize: Number(event.target.value) })}
-        type='number'
+
+      <InputLabel
+        inputWidth='200px'
+        title='Font size:'
+        inputType='number'
+        inputValue={selectedIcon.fontSize}
         placeholder='Size of icon'
+        onChange={(event) => setSelectedIcon({ ...selectedIcon, fontSize: Number(event.target.value) })}
       />
       <Button
         disabled={!selectedIcon.value || !selectedIcon.fontSize}
