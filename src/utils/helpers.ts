@@ -13,6 +13,11 @@ export const getButtonProps = (type: ButtonType) => {
         background: COLORS.PRIMARY,
         color: COLORS.WHITE,
       }
+    case ButtonType.DANGER:
+      return {
+        background: COLORS.RED,
+        color: COLORS.WHITE,
+      }
     default:
       return {
         background: COLORS.PRIMARY,

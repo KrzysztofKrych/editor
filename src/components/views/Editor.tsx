@@ -18,6 +18,7 @@ import { Icon } from '../ui/Icon'
 export const Editor = () => {
   const textRef = useRef(null)
   const iconRef = useRef(null)
+  const containerRef = useRef(null)
   const { draggableTexts, draggableIcons, draggableContainers } = useSelector(editorSelector)
   const dispatch = useAppDispatch()
 
@@ -71,7 +72,7 @@ export const Editor = () => {
         <Draggable
           key={container.id}
           bounds='parent'
-          nodeRef={iconRef}
+          nodeRef={containerRef}
           onStop={(event, position) => {
             dispatch(updateDraggableContainerThunkAction({ ...container, position: { x: position.x, y: position.y } }))
           }}
@@ -82,7 +83,7 @@ export const Editor = () => {
             }}
             border={`1px solid ${COLORS.PRIMARY}`}
             style={{ display: 'inline-block', width: `${container.width}px`, height: `${container.height}px` }}
-            ref={iconRef}
+            ref={containerRef}
           />
         </Draggable>
       ))}

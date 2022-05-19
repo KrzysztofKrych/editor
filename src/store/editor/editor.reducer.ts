@@ -38,6 +38,9 @@ export const editorSlice = createSlice({
         return text
       })
     },
+    deleteDraggableText: (state, { payload }: PayloadAction<string>) => {
+      state.draggableTexts = state.draggableTexts.filter((text) => text.id !== payload)
+    },
     addDraggableIcon: (state, { payload }: PayloadAction<DraggableIcon>) => {
       state.draggableIcons = [payload, ...state.draggableIcons]
     },
@@ -48,6 +51,9 @@ export const editorSlice = createSlice({
         }
         return text
       })
+    },
+    deleteDraggableIcon: (state, { payload }: PayloadAction<string>) => {
+      state.draggableIcons = state.draggableIcons.filter((icon) => icon.id !== payload)
     },
     addDraggableContainer: (state, { payload }: PayloadAction<DraggableContainer>) => {
       state.draggableContainers = [...state.draggableContainers, payload]
@@ -60,6 +66,9 @@ export const editorSlice = createSlice({
         return text
       })
     },
+    deleteDraggableContainer: (state, { payload }: PayloadAction<string>) => {
+      state.draggableContainers = state.draggableContainers.filter((container) => container.id !== payload)
+    },
     toggleCurrentMenu: (state, { payload }: PayloadAction<CurrentMenu>) => {
       state.currentMenu = payload
     },
@@ -69,10 +78,13 @@ export const editorSlice = createSlice({
 export const {
   addDraggableText,
   updateDraggableText,
+  deleteDraggableText,
   addDraggableIcon,
   updateDraggableIcon,
+  deleteDraggableIcon,
   addDraggableContainer,
   updateDraggableContainer,
+  deleteDraggableContainer,
   toggleCurrentMenu,
 } = editorSlice.actions
 

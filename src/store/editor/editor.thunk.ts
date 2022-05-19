@@ -4,6 +4,9 @@ import {
   addDraggableContainer,
   addDraggableIcon,
   addDraggableText,
+  deleteDraggableContainer,
+  deleteDraggableIcon,
+  deleteDraggableText,
   toggleCurrentMenu,
   updateDraggableContainer,
   updateDraggableIcon,
@@ -21,6 +24,11 @@ export const updateDraggableTextThunkAction =
   async (dispatch) => {
     dispatch(updateDraggableText(text))
   }
+export const deleteDraggableTextThunkAction =
+  (id: string): AppThunk =>
+  async (dispatch) => {
+    dispatch(deleteDraggableText(id))
+  }
 
 export const addDraggableIconThunkAction =
   (icon: DraggableIcon): AppThunk =>
@@ -34,6 +42,12 @@ export const updateDraggableIconThunkAction =
     dispatch(updateDraggableIcon(icon))
   }
 
+export const deleteDraggableIconThunkAction =
+  (id: string): AppThunk =>
+  async (dispatch) => {
+    dispatch(deleteDraggableIcon(id))
+  }
+
 export const addDraggableContainerThunkAction =
   (container: DraggableContainer): AppThunk =>
   async (dispatch) => {
@@ -44,6 +58,11 @@ export const updateDraggableContainerThunkAction =
   (container: DraggableContainer): AppThunk =>
   async (dispatch) => {
     dispatch(updateDraggableContainer(container))
+  }
+export const deleteDraggableContainerThunkAction =
+  (id: string): AppThunk =>
+  async (dispatch) => {
+    dispatch(deleteDraggableContainer(id))
   }
 
 export const toggleMenuTypeThunkAction =
