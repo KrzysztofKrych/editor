@@ -4,16 +4,21 @@ import { useAppDispatch, useAppSelector } from '../../store'
 import { DEFAULT_POSITION } from '../../store/editor/consts'
 import { addDraggableIconThunkAction } from '../../store/editor/editor.thunk'
 import { iconsSelector } from '../../store/icons/icons.reducer'
-import { setSelectedIconThunkAction } from '../../store/icons/icons.thunk'
 import { StyledInput, StyledSelect } from '../../styles/styled-components'
 import { ButtonType, DraggableType } from '../../utils/enums'
 import { getSlicedArray, getUniqId } from '../../utils/helpers'
 import { Button } from './Button'
 
+const DEFAULT_ICON = {
+  fontSize: 0,
+  value: '',
+}
+
 export const AddIconInformations = () => {
-  const { icons, selectedIcon } = useAppSelector(iconsSelector)
+  const { icons } = useAppSelector(iconsSelector)
   const [filtredIcons, setFiltredIcons] = useState<string[]>([])
   const dispatch = useAppDispatch()
+  const [selectedIcon, setSelectedIcon] = useState(DEFAULT_ICON)
 
   const handleSetIcons = (icons: string[]) => {
     setFiltredIcons(getSlicedArray(icons, { start: 0, end: 20 }))
@@ -29,11 +34,12 @@ export const AddIconInformations = () => {
     dispatch(
       addDraggableIconThunkAction({
         ...DEFAULT_POSITION,
-        type: DraggableType.ICON,
         ...selectedIcon,
+        type: DraggableType.ICON,
         id: getUniqId(),
       })
     )
+    setSelectedIcon(DEFAULT_ICON)
   }
 
   useEffect(() => {
@@ -46,8 +52,9 @@ export const AddIconInformations = () => {
     <>
       <StyledSelect
         onChange={(value) => {
-          dispatch(setSelectedIconThunkAction({ ...selectedIcon, value: value as string }))
+          setSelectedIcon({ ...selectedIcon, value: value as string })
         }}
+        value={selectedIcon.value || null}
         onSearch={handleSearch}
         showSearch
         placeholder='Search...'
@@ -59,9 +66,8 @@ export const AddIconInformations = () => {
         ))}
       </StyledSelect>
       <StyledInput
-        onChange={(event) =>
-          dispatch(setSelectedIconThunkAction({ ...selectedIcon, fontSize: Number(event.target.value) }))
-        }
+        value={selectedIcon.fontSize}
+        onChange={(event) => setSelectedIcon({ ...selectedIcon, fontSize: Number(event.target.value) })}
         type='number'
         placeholder='Size of icon'
       />

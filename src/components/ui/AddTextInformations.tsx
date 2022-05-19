@@ -25,6 +25,7 @@ export const AddTextInformations = () => {
         id: getUniqId(),
       })
     )
+    setControlledTextValue(DEFAULT_TEXT)
   }
   return (
     <>
