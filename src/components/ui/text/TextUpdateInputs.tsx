@@ -1,7 +1,7 @@
-import { DraggableText } from '../../store/editor/interfaces'
-import { COLORS } from '../../styles/colors'
-import { isCssProperty } from '../../utils/helpers'
-import { InputLabel } from './InputLabel'
+import { DraggableText } from '../../../store/editor/interfaces'
+import { COLORS } from '../../../styles/colors'
+import { isCssProperty } from '../../../utils/helpers'
+import { InputLabel } from '../elements/InputLabel'
 
 interface Props {
   controlledTextValues: DraggableText

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
-import { COLORS } from '../../styles/colors'
-import { StyledSelect, StyledText } from '../../styles/styled-components'
+import { COLORS } from '../../../styles/colors'
+import { StyledSelect, StyledText } from '../../../styles/styled-components'
 
 interface Props {
   defaultValue: string

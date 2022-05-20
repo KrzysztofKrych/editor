@@ -12,7 +12,7 @@ import { CurrentMenu } from '../../store/editor/interfaces'
 import { COLORS } from '../../styles/colors'
 import { StyledDiv } from '../../styles/styled-components'
 import { DraggableType, MenuType } from '../../utils/enums'
-import { Icon } from '../ui/Icon'
+import { Icon } from '../ui/elements/Icon'
 
 export const Editor = () => {
   const { draggableTexts, draggableIcons, draggableContainers } = useSelector(editorSelector)

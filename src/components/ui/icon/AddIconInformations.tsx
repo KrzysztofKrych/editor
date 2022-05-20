@@ -1,14 +1,14 @@
 import { Select } from 'antd'
 import { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../store'
-import { DEFAULT_POSITION } from '../../store/editor/consts'
-import { addDraggableIconThunkAction } from '../../store/editor/editor.thunk'
-import { iconsSelector } from '../../store/icons/icons.reducer'
-import { StyledDiv, StyledSelect } from '../../styles/styled-components'
-import { ButtonType, DraggableType } from '../../utils/enums'
-import { getSlicedArray, getUniqId } from '../../utils/helpers'
-import { Button } from './Button'
-import { InputLabel } from './InputLabel'
+import { useAppSelector, useAppDispatch } from '../../../store'
+import { DEFAULT_POSITION } from '../../../store/editor/consts'
+import { addDraggableIconThunkAction } from '../../../store/editor/editor.thunk'
+import { iconsSelector } from '../../../store/icons/icons.reducer'
+import { StyledDiv, StyledSelect } from '../../../styles/styled-components'
+import { ButtonType, DraggableType } from '../../../utils/enums'
+import { getSlicedArray, getUniqId } from '../../../utils/helpers'
+import { Button } from '../elements/Button'
+import { InputLabel } from '../elements/InputLabel'
 
 const DEFAULT_ICON = {
   fontSize: 0,

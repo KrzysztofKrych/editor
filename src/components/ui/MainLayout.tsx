@@ -8,7 +8,7 @@ import { ButtonType, MenuType } from '../../utils/enums'
 import { Editor } from '../views/Editor'
 import { EditorMenu } from '../views/EditorMenu'
 import { EditPanel } from '../views/EditPanel'
-import { Button } from './Button'
+import { Button } from './elements/Button'
 
 export const MainLayout = () => {
   const { currentMenu } = useAppSelector(editorSelector)

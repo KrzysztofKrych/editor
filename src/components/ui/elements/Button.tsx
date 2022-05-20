@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react'
-import { StyledButton } from '../../styles/styled-components'
-import { ButtonType } from '../../utils/enums'
-import { getButtonProps } from '../../utils/helpers'
+import { StyledButton } from '../../../styles/styled-components'
+import { ButtonType } from '../../../utils/enums'
+import { getButtonProps } from '../../../utils/helpers'
 
 interface Props {
   text: string

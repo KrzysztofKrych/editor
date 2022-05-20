@@ -1,17 +1,17 @@
 import { Modal } from 'antd'
 import { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../store'
-import { DEFAULT_CONTAINER } from '../../store/editor/consts'
-import { editorSelector, toggleCurrentMenu } from '../../store/editor/editor.reducer'
+import { useAppDispatch, useAppSelector } from '../../../store'
+import { DEFAULT_CONTAINER } from '../../../store/editor/consts'
+import { editorSelector, toggleCurrentMenu } from '../../../store/editor/editor.reducer'
 import {
   deleteDraggableContainerThunkAction,
   updateDraggableContainerThunkAction,
-} from '../../store/editor/editor.thunk'
-import { DraggableContainer } from '../../store/editor/interfaces'
-import { COLORS } from '../../styles/colors'
-import { StyledFlex, StyledText } from '../../styles/styled-components'
-import { ButtonType, MenuType } from '../../utils/enums'
-import { Button } from './Button'
+} from '../../../store/editor/editor.thunk'
+import { DraggableContainer } from '../../../store/editor/interfaces'
+import { COLORS } from '../../../styles/colors'
+import { StyledFlex, StyledText } from '../../../styles/styled-components'
+import { ButtonType, MenuType } from '../../../utils/enums'
+import { Button } from '../elements/Button'
 import { ContainerUpdateInputs } from './ContainerUpdateInputs'
 
 export const EditContainerInformations = () => {

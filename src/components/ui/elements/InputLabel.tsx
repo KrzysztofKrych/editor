@@ -1,6 +1,6 @@
 import { CSSProperties, FocusEvent } from 'react'
-import { COLORS } from '../../styles/colors'
-import { StyledFlex, StyledInput, StyledText } from '../../styles/styled-components'
+import { COLORS } from '../../../styles/colors'
+import { StyledFlex, StyledInput, StyledText } from '../../../styles/styled-components'
 
 interface Props {
   inputValue: string | number
