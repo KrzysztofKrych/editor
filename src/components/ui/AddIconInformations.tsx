@@ -75,6 +75,7 @@ export const AddIconInformations = () => {
         inputValue={selectedIcon.fontSize}
         placeholder='Size of icon'
         onChange={(event) => setSelectedIcon({ ...selectedIcon, fontSize: Number(event.target.value) })}
+        min={0}
       />
       <Button
         disabled={!selectedIcon.value || !selectedIcon.fontSize}

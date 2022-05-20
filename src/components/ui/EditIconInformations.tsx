@@ -1,5 +1,5 @@
 import { Modal } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { DEFAULT_ICON } from '../../store/editor/consts'
 import { editorSelector, toggleCurrentMenu } from '../../store/editor/editor.reducer'
@@ -28,6 +28,10 @@ export const EditIconInformations = () => {
     dispatch(deleteDraggableIconThunkAction(updatedIconValues.id))
     dispatch(toggleCurrentMenu({ value: MenuType.NEW, type: null, id: '' }))
   }
+
+  useEffect(() => {
+    setUpdateIconValues(draggableIcons.find((icon) => icon.id === currentMenu.id) || DEFAULT_ICON)
+  }, [currentMenu.id])
 
   return (
     <>

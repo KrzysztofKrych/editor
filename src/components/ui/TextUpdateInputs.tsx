@@ -65,6 +65,7 @@ export const TextUpdateInputs = ({ controlledTextValues, onChange }: Props) => (
       inputType='number'
       inputValue={controlledTextValues.fontSize}
       placeholder='Choose font size'
+      min={0}
     />
 
     <InputLabel

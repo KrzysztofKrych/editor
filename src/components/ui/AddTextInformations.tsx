@@ -23,7 +23,7 @@ export const AddTextInformations = () => {
         fontWeight: isCssProperty('font-weight', String(controlledTextValues.fontWeight))
           ? controlledTextValues.fontWeight
           : DEFAULT_TEXT.fontWeight,
-        fontSize: isCssProperty('font-size', String(controlledTextValues.fontSize))
+        fontSize: isCssProperty('font-size', `${String(controlledTextValues.fontSize)}px`)
           ? controlledTextValues.fontSize
           : DEFAULT_TEXT.fontSize,
         background: isCssProperty('background-color', String(controlledTextValues.background))
@@ -48,9 +48,7 @@ export const AddTextInformations = () => {
     !isCssProperty('font-weight', String(controlledTextValues.fontWeight)) ||
     !isCssProperty('font-size', String(`${controlledTextValues.fontSize}px`)) ||
     !isCssProperty('background', controlledTextValues.background) ||
-    controlledTextValues.padding
-      ? !isCssProperty('padding', controlledTextValues.padding)
-      : false
+    (controlledTextValues.padding ? !isCssProperty('padding', controlledTextValues.padding) : false)
 
   return (
     <StyledDiv padding='1rem 0' width='100%'>

@@ -1,5 +1,5 @@
 import { Modal } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { DEFAULT_TEXT } from '../../store/editor/consts'
 import { editorSelector, toggleCurrentMenu } from '../../store/editor/editor.reducer'
@@ -37,9 +37,11 @@ export const EditTextInformations = () => {
     !isCssProperty('font-weight', String(updatedTextValues.fontWeight)) ||
     !isCssProperty('font-size', String(`${updatedTextValues.fontSize}px`)) ||
     !isCssProperty('background', updatedTextValues.background) ||
-    updatedTextValues.padding
-      ? !isCssProperty('padding', updatedTextValues.padding)
-      : false
+    (updatedTextValues.padding ? !isCssProperty('padding', updatedTextValues.padding) : false)
+
+  useEffect(() => {
+    setUpdatedTextValues(draggableTexts.find((text) => text.id === currentMenu.id) || DEFAULT_TEXT)
+  }, [currentMenu.id])
 
   return (
     <>

@@ -12,6 +12,7 @@ interface Props {
   inputWidth?: string
   style?: CSSProperties
   inputStyle?: CSSProperties
+  min?: number
 }
 
 export const InputLabel = ({
@@ -24,6 +25,7 @@ export const InputLabel = ({
   inputWidth,
   style,
   inputStyle,
+  min,
 }: Props) => (
   <StyledFlex justifycontent='space-between' width='100%' style={style}>
     <StyledText padding='0 .5rem 0  0' style={{ whiteSpace: 'nowrap' }} size='16' color={COLORS.PRIMARY}>
@@ -37,6 +39,7 @@ export const InputLabel = ({
       onChange={onChange}
       type={inputType}
       placeholder={placeholder}
+      min={min}
     />
   </StyledFlex>
 )

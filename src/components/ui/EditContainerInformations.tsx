@@ -1,5 +1,5 @@
 import { Modal } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { DEFAULT_CONTAINER } from '../../store/editor/consts'
 import { editorSelector, toggleCurrentMenu } from '../../store/editor/editor.reducer'
@@ -32,6 +32,11 @@ export const EditContainerInformations = () => {
     dispatch(deleteDraggableContainerThunkAction(updatedContainerValues.id))
     dispatch(toggleCurrentMenu({ value: MenuType.NEW, type: null, id: '' }))
   }
+
+  useEffect(() => {
+    setUpdatedContainerValues(draggableContainers.find((text) => text.id === currentMenu.id) || DEFAULT_CONTAINER)
+  }, [currentMenu.id])
+
   return (
     <>
       <StyledFlex direction='column' width='100%'>
