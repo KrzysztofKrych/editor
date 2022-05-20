@@ -3,10 +3,10 @@ import { editorSelector, toggleCurrentMenu } from '../../store/editor/editor.red
 import { COLORS } from '../../styles/colors'
 import { StyledFlex, StyledText } from '../../styles/styled-components'
 import { DraggableType, MenuType } from '../../utils/enums'
-import { EditContainerInformations } from '../ui/EditContainerInformations'
-import { EditIconInformations } from '../ui/EditIconInformations'
-import { EditTextInformations } from '../ui/EditTextInformations'
-import { Icon } from '../ui/Icon'
+import { EditContainerInformations } from '../ui/container/EditContainerInformations'
+import { Icon } from '../ui/elements/Icon'
+import { EditIconInformations } from '../ui/icon/EditIconInformations'
+import { EditTextInformations } from '../ui/text/EditTextInformations'
 
 export const EditPanel = () => {
   const dispatch = useAppDispatch()

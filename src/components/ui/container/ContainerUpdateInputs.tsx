@@ -1,5 +1,5 @@
-import { DraggableContainer } from '../../store/editor/interfaces'
-import { InputLabel } from './InputLabel'
+import { DraggableContainer } from '../../../store/editor/interfaces'
+import { InputLabel } from '../elements/InputLabel'
 
 interface Props {
   controlledContainerValues: DraggableContainer

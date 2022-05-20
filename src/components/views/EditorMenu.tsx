@@ -2,10 +2,10 @@ import { Select } from 'antd'
 import { ReactElement, useState } from 'react'
 import { StyledFlex } from '../../styles/styled-components'
 import { DraggableType } from '../../utils/enums'
-import { AddContainerInformations } from '../ui/AddContainerInformations'
-import { AddIconInformations } from '../ui/AddIconInformations'
-import { AddTextInformations } from '../ui/AddTextInformations'
-import { SelectLabel } from '../ui/SelectLabel'
+import { AddTextInformations } from '../ui/text/AddTextInformations'
+import { SelectLabel } from '../ui/elements/SelectLabel'
+import { AddIconInformations } from '../ui/icon/AddIconInformations'
+import { AddContainerInformations } from '../ui/container/AddContainerInformations'
 
 export const EditorMenu = () => {
   const defaultSelectedDraggableType = DraggableType.ICON
