@@ -18,6 +18,7 @@ export const ContainerUpdateInputs = ({ controlledContainerValues, onChange }: P
       onChange={(event) => {
         onChange({ ...controlledContainerValues, width: Number(event.target.value) })
       }}
+      min={0}
     />
 
     <InputLabel
@@ -30,6 +31,7 @@ export const ContainerUpdateInputs = ({ controlledContainerValues, onChange }: P
       onChange={(event) => {
         onChange({ ...controlledContainerValues, height: Number(event.target.value) })
       }}
+      min={0}
     />
   </>
 )
