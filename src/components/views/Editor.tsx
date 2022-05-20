@@ -41,6 +41,7 @@ export const Editor = () => {
               fontSize: `${text.fontSize}px`,
               background: text.background,
               padding: text.padding,
+              cursor: 'pointer',
             }}
             onClick={() => {
               handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.TEXT, id: text.id })
@@ -59,7 +60,7 @@ export const Editor = () => {
           }}
         >
           <StyledDiv
-            style={{ position: 'absolute' }}
+            style={{ position: 'absolute', cursor: 'pointer' }}
             onClick={() => {
               handleUpdateMenuView({ value: MenuType.EDIT, type: DraggableType.ICON, id: icon.id })
             }}
@@ -85,6 +86,7 @@ export const Editor = () => {
               position: 'absolute',
               width: `${container.width}px`,
               height: `${container.height}px`,
+              cursor: 'pointer',
             }}
           />
         </Draggable>
