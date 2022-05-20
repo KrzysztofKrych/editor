@@ -38,7 +38,7 @@ export const Editor = () => {
               position: 'absolute',
               color: text.color,
               fontWeight: text.fontWeight,
-              fontSize: text.fontSize,
+              fontSize: `${text.fontSize}px`,
               background: text.background,
               padding: text.padding,
             }}
